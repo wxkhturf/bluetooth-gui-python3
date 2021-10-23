@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# author:wxkhturf
+# author:Master
 import serial,threading
 import tkinter as tk  # 使用Tkinter前需要先导入
 #点击按钮的响应（点击之后会显示数据，否则不显示接收的数据，但是不影响小车运动界面是显示）
@@ -47,9 +47,10 @@ def ReadUART():
             idx_x = cor_list[-1][0] + dif_x
             idx_y = cor_list[-1][1] + dif_y
             n= (idx_x, idx_y)
-            if n not in cor_list:
-                print(n)
-                cor_list.append(n)
+            #if n not in cor_list:
+            print(n)
+            cor_list.append(n)
+            
             drawLine(cor_list)
             rect = canvas.create_rectangle(cor_list[0][0]-5, cor_list[0][1]+5, \
                 (cor_list[0][0]+5), (cor_list[0][1]-5),fill='red',outline='red',tag="red")                  # 画矩形正方形 
@@ -101,3 +102,4 @@ ReadUARTThread = threading.Thread(target=ReadUART)#多线程
 ReadUARTThread.start()
 #对gui界面进行循环
 window.mainloop()
+
